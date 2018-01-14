@@ -44,11 +44,11 @@ INTPOS block_until_data(
         for( ; ; )
         {
             GetPairTransitions(&pos_start, &pos_end, &width_high, &width_low);
-            if (((exp_width_high * 0.9) <= width_high) &&
-                (width_high <= (exp_width_high * 1.1))) {
+            if (((exp_width_high * 0.8) <= width_high) &&
+                (width_high <= (exp_width_high * 1.2))) {
                 // Matched on HIGH pulse.
-                if (((exp_width_low * 0.9) <= width_low) &&
-                    (width_low <= (exp_width_low * 1.1))) {
+                if (((exp_width_low * 0.8) <= width_low) &&
+                    (width_low <= (exp_width_low * 1.2))) {
                     // Matched on low as well
                     nmatched++;
                 } else if ((SAMPLES_PAUSE_MIN <= width_low) && (width_low <= SAMPLES_PAUSE_MAX)) {
