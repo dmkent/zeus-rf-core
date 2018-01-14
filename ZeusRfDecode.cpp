@@ -116,6 +116,11 @@ void receive_and_process_data(
             nbits = 0;
             data = 0;
             starting_sample = pos_end;
+            nbytes++;
+        }
+
+        if (nbytes > 30) {
+            break;
         }
     }
 }
