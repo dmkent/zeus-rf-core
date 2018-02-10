@@ -53,6 +53,8 @@ INTPOS block_until_data(
                     nmatched++;
                 } else if ((SAMPLES_PAUSE_MIN <= width_low) && (width_low <= SAMPLES_PAUSE_MAX)) {
                     nmatched++;
+		    Serial.print(nmatched);
+		    Serial.println(" last sync bit");
                     // Break without failure - into data mode
                     break;
                 } else {
@@ -99,6 +101,7 @@ void receive_and_process_data(
         GetPairTransitions(&pos_start, &pos_end, &nhigh, &nlow);
         if (nlow > SAMPLES_PREAMBLE_MIN) {
             // Mark to start of this pair (we ignore this one)
+		Serial.println("got end pulse");
             MarkByte(starting_sample, pos_start, data);
             break;
         }
@@ -120,6 +123,7 @@ void receive_and_process_data(
         }
 
         if (nbytes > 30) {
+            Serial.println("too long");
             break;
         }
     }
